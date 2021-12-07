@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<xSCOPEconfig enabled="true" initTracing="true" ioMode="basic">
-  <Probe name="freertos_trace" enabled="false" units="NONE" type="CONTINUOUS" datatype="NONE"/>
-</xSCOPEconfig>
