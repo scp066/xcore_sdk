@@ -66,10 +66,10 @@
 #define appconfGPIO_VOLUME_RAPID_FIRE_MS       	100
 
 /* Echo Demo Configuration */
-#define appconfECHO_IP_ADDR_OCTET_0    	10
-#define appconfECHO_IP_ADDR_OCTET_1    	0
+#define appconfECHO_IP_ADDR_OCTET_0    	192
+#define appconfECHO_IP_ADDR_OCTET_1    	168
 #define appconfECHO_IP_ADDR_OCTET_2    	0
-#define appconfECHO_IP_ADDR_OCTET_3    	253
+#define appconfECHO_IP_ADDR_OCTET_3    	108
 #define appconfECHO_PORT				25565
 
 /* MQTT Demo Configuration */
