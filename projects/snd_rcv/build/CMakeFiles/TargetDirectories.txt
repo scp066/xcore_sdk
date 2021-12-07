@@ -1,0 +1,6 @@
+/home/allah/Documents/xcore_sdk/projects/snd_rcv/build/CMakeFiles/snd_rcv.xe.dir
+/home/allah/Documents/xcore_sdk/projects/snd_rcv/build/CMakeFiles/0.xe.dir
+/home/allah/Documents/xcore_sdk/projects/snd_rcv/build/CMakeFiles/1.xe.dir
+/home/allah/Documents/xcore_sdk/projects/snd_rcv/build/CMakeFiles/TMP_TARGET_1.xe.dir
+/home/allah/Documents/xcore_sdk/projects/snd_rcv/build/CMakeFiles/edit_cache.dir
+/home/allah/Documents/xcore_sdk/projects/snd_rcv/build/CMakeFiles/rebuild_cache.dir

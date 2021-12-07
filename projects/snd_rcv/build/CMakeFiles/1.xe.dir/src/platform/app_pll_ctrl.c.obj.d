@@ -1,0 +1,29 @@
+CMakeFiles/1.xe.dir/src/platform/app_pll_ctrl.c.obj: \
+  /home/allah/Documents/xcore_sdk/projects/snd_rcv/src/platform/app_pll_ctrl.c \
+  /home/allah/Documents/xcore_sdk/modules/multitile_support/platform.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/platform.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/xs1.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/timer.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/xs1_g4000b-512.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/xs1_user.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/xs3a_user.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/xs1_kernel.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/xs3a_kernel.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/xs1_registers.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/xs3a_registers.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/xs1_clock.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/xcore/hwtimer.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/stdint.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/xcore/_support/xcore_common.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/xcore/_support/xcore_hwtimer_impl.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/xcore/_support/xcore_resource_impl.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/xcore/_support/xcore_macros.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/xcore/_support/xcore_feature_test_impl.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/xcore/_support/xcore_reference_time.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/xcore/assert.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/xcore/_support/xcore_hardware_assert.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/limits.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/newlib.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/clang/limits.h \
+  /home/allah/Documents/xcore_sdk/projects/snd_rcv/src/platform/app_pll_ctrl.h \
+  /home/allah/Documents/xcore_sdk/projects/snd_rcv/src/app_conf.h

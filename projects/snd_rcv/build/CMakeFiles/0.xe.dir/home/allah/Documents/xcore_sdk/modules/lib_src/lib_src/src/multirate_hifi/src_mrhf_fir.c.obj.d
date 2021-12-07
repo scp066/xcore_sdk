@@ -1,0 +1,29 @@
+CMakeFiles/0.xe.dir/home/allah/Documents/xcore_sdk/modules/lib_src/lib_src/src/multirate_hifi/src_mrhf_fir.c.obj: \
+  /home/allah/Documents/xcore_sdk/modules/lib_src/lib_src/src/multirate_hifi/src_mrhf_fir.c \
+  /usr/local/XMOS/XTC/15.1.0/target/include/stdlib.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/_ansi.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/newlib.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/sys/config.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/machine/ieeefp.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/clang/stddef.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/sys/reent.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/sys/_types.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/machine/_types.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/machine/_default_types.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/sys/lock.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/machine/stdlib.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/alloca.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/stdio.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/clang/stdarg.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/sys/types.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/machine/types.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/sys/features.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/sys/stdio.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/time.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/machine/time.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/math.h \
+  /home/allah/Documents/xcore_sdk/modules/lib_src/lib_src/src/multirate_hifi/src_mrhf_fir_os_inner_loop_asm.h \
+  /home/allah/Documents/xcore_sdk/modules/lib_src/lib_src/src/multirate_hifi/src_mrhf_fir_inner_loop_asm.h \
+  /home/allah/Documents/xcore_sdk/modules/lib_src/lib_src/src/multirate_hifi/src_mrhf_adfir_inner_loop_asm.h \
+  /home/allah/Documents/xcore_sdk/modules/lib_src/lib_src/src/multirate_hifi/src_mrhf_spline_coeff_gen_inner_loop_asm.h \
+  /home/allah/Documents/xcore_sdk/modules/lib_src/lib_src/src/multirate_hifi/src_mrhf_fir.h

@@ -1,0 +1,20 @@
+CMakeFiles/0.xe.dir/home/allah/Documents/xcore_sdk/modules/rtos/sw_services/http/thirdparty/coreHTTP/source/dependency/3rdparty/http_parser/http_parser.c.obj: \
+  /home/allah/Documents/xcore_sdk/modules/rtos/sw_services/http/thirdparty/coreHTTP/source/dependency/3rdparty/http_parser/http_parser.c \
+  /home/allah/Documents/xcore_sdk/modules/rtos/sw_services/http/thirdparty/coreHTTP/source/dependency/3rdparty/http_parser/http_parser.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/clang/stddef.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/stdint.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/assert.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/_ansi.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/newlib.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/sys/config.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/machine/ieeefp.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/ctype.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/string.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/sys/reent.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/sys/_types.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/machine/_types.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/machine/_default_types.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/sys/lock.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/sys/string.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/limits.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/clang/limits.h
