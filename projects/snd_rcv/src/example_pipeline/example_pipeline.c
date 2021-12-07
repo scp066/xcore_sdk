@@ -178,22 +178,17 @@ static void intertile_audiopipeline_RECV_thread(QueueHandle_t input_queue)
     int32_t *msg;
 
     for (;;) {
-        if(xQueueReceive(input_queue, &msg, pdMS_TO_TICKS(1)) == pdFALSE ){
-
-        
-            rtos_printf("interline audio lost \n");
+        if (xQueueReceive(input_queue, &msg, pdMS_TO_TICKS(1)) == pdFALSE){
+            rtos_printf("intertile audio frame lost\n");
         }
-       msg_length = rtos_intertile_rx(
-                            intertile_ctx,
-                            appconfINTERTILE_AUDIOPIPELINE_RECV_PORT,
-                            (void **) &msg,
-                            portMAX_DELAY);
-
-
-
-
+        rtos_intertile_tx(
+                        intertile_ctx,
+                        appconfINTERTILE_AUDIOPIPELINE_RECV_PORT,
+                        (void **) &msg,
+                        portMAX_DELAY);
     }
 }
+/*
 static void intertile_pipeline_client_RECV_init(
     QueueHandle_t input_queue)
 {
@@ -204,6 +199,9 @@ static void intertile_pipeline_client_RECV_init(
                 appconfINTERTILE_AUDIOPIPELINE_RECV_TASK_PRIORITY,
                 NULL);
 }
+
+*/
+
 
 static void intertile_pipeline_client_init(
     QueueHandle_t output_queue)
