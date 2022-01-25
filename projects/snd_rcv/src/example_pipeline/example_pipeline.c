@@ -171,23 +171,6 @@ static void intertile_audiopipeline_thread(QueueHandle_t output_queue)
     }
 }
 
-static void intertile_audiopipeline_rcv_thread(QueueHandle_t input_queue)
-{
-    int msg_length;
-    int32_t *msg;
-
-    for (;;) {
-        if (xQueueReceive(input_queue, &msg, pdMS_TO_TICKS(1)) == pdFALSE){
-            rtos_printf("intertile audio frame lost\n");
-        }
-        rtos_intertile_tx(
-                        intertile_ctx,
-                        appconfINTERTILE_AUDIOPIPELINE_RCV_PORT,
-                        (void **) &msg,
-                        portMAX_DELAY);
-    }
-}
-
 static void intertile_pipeline_client_init(
     QueueHandle_t output_queue)
 {
@@ -219,6 +202,32 @@ void intertile_pipeline_to_tcp_create(void)
     }
 }
 
+void example_pipeline_init(UBaseType_t priority)
+{
+	const int stage_count = 2;
+
+	const audio_pipeline_stage_t stages[stage_count] = {
+			(audio_pipeline_stage_t) stage0,
+			(audio_pipeline_stage_t) stage1
+	};
+
+	const configSTACK_DEPTH_TYPE stage_stack_sizes[stage_count] = {
+			configMINIMAL_STACK_SIZE,
+			configMINIMAL_STACK_SIZE
+	};
+
+	audio_pipeline_init(
+			example_pipeline_input,
+			example_pipeline_output,
+            NULL,
+            NULL,
+			stages,
+			stage_stack_sizes,
+			priority,
+			stage_count);
+}
+
+//AUDIO RECIEVE CODE
 static void intertile_pipeline_server_init(
     QueueHandle_t input_queue)
 {
@@ -250,27 +259,19 @@ void tcp_to_intertile_pipeline_create(void)
     }
 }
 
-void example_pipeline_init(UBaseType_t priority)
+static void intertile_audiopipeline_rcv_thread(QueueHandle_t input_queue)
 {
-	const int stage_count = 2;
+    int msg_length;
+    int32_t *msg;
 
-	const audio_pipeline_stage_t stages[stage_count] = {
-			(audio_pipeline_stage_t) stage0,
-			(audio_pipeline_stage_t) stage1
-	};
-
-	const configSTACK_DEPTH_TYPE stage_stack_sizes[stage_count] = {
-			configMINIMAL_STACK_SIZE,
-			configMINIMAL_STACK_SIZE
-	};
-
-	audio_pipeline_init(
-			example_pipeline_input,
-			example_pipeline_output,
-            NULL,
-            NULL,
-			stages,
-			stage_stack_sizes,
-			priority,
-			stage_count);
+    for (;;) {
+        if (xQueueReceive(input_queue, &msg, pdMS_TO_TICKS(1)) == pdFALSE){
+            rtos_printf("intertile audio frame lost\n");
+        }
+        rtos_intertile_tx(
+                        intertile_ctx,
+                        appconfINTERTILE_AUDIOPIPELINE_RCV_PORT,
+                        (void **) &msg,
+                        portMAX_DELAY);
+    }
 }
