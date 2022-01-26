@@ -228,6 +228,24 @@ void example_pipeline_init(UBaseType_t priority)
 }
 
 //AUDIO RECIEVE CODE
+
+static void intertile_audiopipeline_rcv_thread(QueueHandle_t input_queue)
+{
+    int msg_length;
+    int32_t *msg;
+
+    for (;;) {
+        if (xQueueReceive(input_queue, &msg, pdMS_TO_TICKS(1)) == pdFALSE){
+            rtos_printf("intertile audio frame lost\n");
+        }
+        rtos_intertile_tx(
+                        intertile_ctx,
+                        appconfINTERTILE_AUDIOPIPELINE_RCV_PORT,
+                        (void **) &msg,
+                        portMAX_DELAY);
+    }
+}
+
 static void intertile_pipeline_server_init(
     QueueHandle_t input_queue)
 {
@@ -256,22 +274,5 @@ void tcp_to_intertile_pipeline_create(void)
         tcp_stream_to_queue_create(
                 tcp_to_speaker_handle,
                 (appconfINTERTILE_AUDIOPIPELINE_TASK_PRIORITY + 1) );
-    }
-}
-
-static void intertile_audiopipeline_rcv_thread(QueueHandle_t input_queue)
-{
-    int msg_length;
-    int32_t *msg;
-
-    for (;;) {
-        if (xQueueReceive(input_queue, &msg, pdMS_TO_TICKS(1)) == pdFALSE){
-            rtos_printf("intertile audio frame lost\n");
-        }
-        rtos_intertile_tx(
-                        intertile_ctx,
-                        appconfINTERTILE_AUDIOPIPELINE_RCV_PORT,
-                        (void **) &msg,
-                        portMAX_DELAY);
     }
 }
