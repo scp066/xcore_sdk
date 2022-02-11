@@ -12,6 +12,7 @@ CMakeFiles/0.xe.dir/src/main.c.obj: \
   /usr/local/XMOS/XTC/15.1.0/target/include/xs1_registers.h \
   /usr/local/XMOS/XTC/15.1.0/target/include/xs3a_registers.h \
   /usr/local/XMOS/XTC/15.1.0/target/include/xs1_clock.h \
+  /home/soydev/xcore_sdk/projects/snd_rcv/src/platform/aic3204.h \
   /home/soydev/xcore_sdk/modules/rtos/FreeRTOS/FreeRTOS-SMP-Kernel/include/FreeRTOS.h \
   /usr/local/XMOS/XTC/15.1.0/target/include/clang/stddef.h \
   /usr/local/XMOS/XTC/15.1.0/target/include/stdint.h \

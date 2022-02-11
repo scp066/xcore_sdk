@@ -22,6 +22,16 @@ static inline int aic3204_reg_write(uint8_t reg, uint8_t val)
 	if (ret == I2C_REGOP_SUCCESS) {
 		return 0;
 	} else {
+		switch(ret){
+			case I2C_REGOP_DEVICE_NACK:
+				rtos_printf("I2C_REGOP_DEVICE_NACK");
+				break;
+			case I2C_REGOP_INCOMPLETE:
+				rtos_printf("I2C_REGOP_INCOMPLETE");
+				break;
+			default:
+				break;
+		}
 		return -1;
 	}
 }
@@ -124,6 +134,7 @@ int aic3204_init(void)
 		// Wait for 2.5 sec for soft stepping to take effect
 		vTaskDelay(pdMS_TO_TICKS(2500));
 	} else {
+		rtos_printf("failed part one \n");
 		return -1;
 	}
 
@@ -146,6 +157,7 @@ int aic3204_init(void)
 	) {
 		return 0;
 	} else {
+		rtos_printf("failed part two \n");
 		return -1;
 	}
 }

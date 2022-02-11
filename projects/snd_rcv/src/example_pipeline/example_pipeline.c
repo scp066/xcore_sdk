@@ -235,8 +235,8 @@ static void intertile_audiopipeline_rcv_thread(QueueHandle_t input_queue)
     int32_t *msg;
 
     for (;;) {
-        if (xQueueReceive(input_queue, &msg, pdMS_TO_TICKS(1)) == pdFALSE){
-            rtos_printf("intertile audio frame lost\n");
+        if (xQueueReceive(input_queue, &msg, pdMS_TO_TICKS(1)) == pdTRUE){
+            rtos_printf("Audio Recieved\n");
         }
         rtos_intertile_tx(
                         intertile_ctx,
@@ -275,4 +275,61 @@ void tcp_to_intertile_pipeline_create(void)
                 tcp_to_speaker_handle,
                 (appconfINTERTILE_AUDIOPIPELINE_TASK_PRIORITY + 1) );
     }
+}
+
+void *dac_pipeline_input(void *data)
+{
+    (void) data;
+
+    int32_t (*audio_frame)[FRAME_NUM_CHANS];
+
+    audio_frame = pvPortMalloc(appconfAUDIO_FRAME_LENGTH * sizeof(audio_frame[0]));
+
+    rtos_intertile_rx(
+                    intertile_ctx,
+                    appconfINTERTILE_AUDIOPIPELINE_RCV_PORT,
+                    audio_frame,
+                    portMAX_DELAY);
+
+    return audio_frame;
+}
+
+int dac_pipeline_output(void *audio_frame, void *data)
+{
+    (void) data;
+
+    rtos_i2s_tx(
+            i2s_ctx,
+            audio_frame,
+            appconfAUDIO_FRAME_LENGTH,
+            portMAX_DELAY);
+
+    vPortFree(audio_frame);
+
+    return 0;
+}
+
+void dac_pipeline_init(UBaseType_t priority)
+{
+	const int stage_count = 2;
+
+	const audio_pipeline_stage_t stages[stage_count] = {
+			(audio_pipeline_stage_t) stage0,
+			(audio_pipeline_stage_t) stage1
+	};
+
+	const configSTACK_DEPTH_TYPE stage_stack_sizes[stage_count] = {
+			configMINIMAL_STACK_SIZE,
+			configMINIMAL_STACK_SIZE
+	};
+
+	audio_pipeline_init(
+			dac_pipeline_input,
+			dac_pipeline_output,
+            NULL,
+            NULL,
+			stages,
+			stage_stack_sizes,
+			priority,
+			stage_count);
 }

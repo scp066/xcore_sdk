@@ -4,7 +4,7 @@
 /* System headers */
 #include <platform.h>
 #include <xs1.h>
-
+#include "platform/aic3204.h"
 /* FreeRTOS headers */
 #include "FreeRTOS.h"
 #include "queue.h"
@@ -43,8 +43,17 @@ void vApplicationStackOverflowHook(TaskHandle_t pxTask, char *pcTaskName) {
 void startup_task(void *arg)
 {
     rtos_printf("Startup task running from tile %d on core %d\n", THIS_XCORE_TILE, portGET_CORE_ID());
-
     platform_start();
+    //DAC Debugging
+    /*for(;;){
+        #if ON_TILE(I2C_TILE_NO)
+            if (aic3204_init() != 0) {
+                rtos_printf("DAC initialization failed\n");
+            }
+        #endif
+    }*/
+    
+    
 
 #if ON_TILE(0)
     /* Initialize filesystem  */
@@ -90,7 +99,21 @@ void startup_task(void *arg)
 
     /* Create audio pipeline */
     example_pipeline_init(appconfAUDIO_PIPELINE_TASK_PRIORITY);
+    dac_pipeline_init(appconfAUDIO_PIPELINE_TASK_PRIORITY);
     //remote_cli_gain_init(appconfCLI_RPC_PROCESS_COMMAND_TASK_PRIORITY);
+    uint32_t* audio_frame;
+    //DAC DEBUGGING
+    /*for (;;){
+        
+        if(xApplicationGetRandomNumber(audio_frame)==pdTRUE){
+            rtos_i2s_tx(
+            i2s_ctx,
+            audio_frame,
+            appconfAUDIO_FRAME_LENGTH,
+            portMAX_DELAY);
+        }
+        
+    }*/
 #endif
 
 	for (;;) {
@@ -103,7 +126,6 @@ static void tile_common_init(chanend_t c)
 {
     platform_init(c);
     chanend_free(c);
-
     xTaskCreate((TaskFunction_t) startup_task,
                 "startup_task",
                 configMINIMAL_STACK_SIZE * 10,
