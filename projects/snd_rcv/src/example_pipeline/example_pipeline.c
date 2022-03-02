@@ -233,22 +233,26 @@ static void intertile_audiopipeline_rcv_thread(QueueHandle_t input_queue)
 {
     int msg_length;
     int32_t *msg;
-
+    rtos_printf("intertile_audiopipeline_rcv_thread\n");
     for (;;) {
         if (xQueueReceive(input_queue, &msg, pdMS_TO_TICKS(1)) == pdTRUE){
             rtos_printf("Audio Recieved\n");
+            rtos_printf(*msg);
         }
+        
         rtos_intertile_tx(
                         intertile_ctx,
                         appconfINTERTILE_AUDIOPIPELINE_RCV_PORT,
                         (void **) &msg,
                         portMAX_DELAY);
+        //vPortFree(msg);
     }
 }
 
 static void intertile_pipeline_server_init(
     QueueHandle_t input_queue)
 {
+    rtos_printf("intertile_pipeline_server_init\n");
     xTaskCreate((TaskFunction_t) intertile_audiopipeline_rcv_thread,
                 "intertile_ap_rcv_thread",
                 RTOS_THREAD_STACK_SIZE(intertile_audiopipeline_rcv_thread),
@@ -259,21 +263,25 @@ static void intertile_pipeline_server_init(
 
 void tcp_to_intertile_pipeline_create(void)
 {
+    
     QueueHandle_t input_queue = xQueueCreate(2, sizeof(void *));
     if( input_queue != NULL )
     {
+        rtos_printf("Hello\n");
         tcp_to_queue_handle_t tcp_to_speaker_handle = tcp_to_queue_create(
                 input_queue,
                 appconfTCP_TO_QUEUE_PORT,
                 portMAX_DELAY,
                 pdMS_TO_TICKS( 5000 ),
                 sizeof(int32_t) * appconfAUDIO_FRAME_LENGTH );
-
+        rtos_printf("Pass 1\n");
         intertile_pipeline_server_init(
                 tcp_to_speaker_handle->queue);
+        rtos_printf("Pass 2\n");
         tcp_stream_to_queue_create(
                 tcp_to_speaker_handle,
                 (appconfINTERTILE_AUDIOPIPELINE_TASK_PRIORITY + 1) );
+        rtos_printf("Pass 3\n");
     }
 }
 
@@ -322,7 +330,7 @@ void dac_pipeline_init(UBaseType_t priority)
 			configMINIMAL_STACK_SIZE,
 			configMINIMAL_STACK_SIZE
 	};
-
+    rtos_printf("DAC\n");
 	audio_pipeline_init(
 			dac_pipeline_input,
 			dac_pipeline_output,

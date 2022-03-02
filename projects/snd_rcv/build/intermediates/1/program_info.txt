@@ -10,8 +10,8 @@ tile[0] (node "0", tile 0) unused timers,  lower bound: 9
 tile[0] (node "0", tile 0) channel end usage,  upper bound: 2
 tile[0] (node "0", tile 0) unused channel ends,  lower bound: 30
 tile[1] (node "0", tile 1) stack usage,  upper bound: 4436
-tile[1] (node "0", tile 1) program size,  upper bound: 173808
-tile[1] (node "0", tile 1) free memory,  lower bound: 346044
+tile[1] (node "0", tile 1) program size,  upper bound: 171416
+tile[1] (node "0", tile 1) free memory,  lower bound: 348436
 tile[1] (node "0", tile 1) thread usage,  upper bound: 5
 tile[1] (node "0", tile 1) unused threads,  lower bound: 3
 tile[1] (node "0", tile 1) timer count,  upper bound: 5

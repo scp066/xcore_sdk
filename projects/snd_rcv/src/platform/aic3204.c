@@ -17,17 +17,17 @@ static inline int aic3204_reg_write(uint8_t reg, uint8_t val)
 {
 	i2c_regop_res_t ret;
 
-	ret = rtos_i2c_master_reg_write(i2c_master_ctx, AIC3204_I2C_DEVICE_ADDR, reg, val);
+	ret = rtos_i2c_master_reg_write(i2c_master_ctx, AIC3204_I2C_DEVICE_ADDR<<1, reg, val);
 
 	if (ret == I2C_REGOP_SUCCESS) {
 		return 0;
 	} else {
 		switch(ret){
 			case I2C_REGOP_DEVICE_NACK:
-				rtos_printf("I2C_REGOP_DEVICE_NACK");
+				rtos_printf("I2C_REGOP_DEVICE_NACK\n");
 				break;
 			case I2C_REGOP_INCOMPLETE:
-				rtos_printf("I2C_REGOP_INCOMPLETE");
+				rtos_printf("I2C_REGOP_INCOMPLETE\n");
 				break;
 			default:
 				break;

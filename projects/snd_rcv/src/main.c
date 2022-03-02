@@ -45,7 +45,7 @@ void startup_task(void *arg)
     rtos_printf("Startup task running from tile %d on core %d\n", THIS_XCORE_TILE, portGET_CORE_ID());
     platform_start();
     //DAC Debugging
-    /*for(;;){
+    /*sfor(;;){
         #if ON_TILE(I2C_TILE_NO)
             if (aic3204_init() != 0) {
                 rtos_printf("DAC initialization failed\n");
@@ -95,10 +95,10 @@ void startup_task(void *arg)
 
 #if ON_TILE(1)
     /* Create the gpio control task */
-    gpio_ctrl_create(appconfGPIO_TASK_PRIORITY);
+    //gpio_ctrl_create(appconfGPIO_TASK_PRIORITY);
 
     /* Create audio pipeline */
-    example_pipeline_init(appconfAUDIO_PIPELINE_TASK_PRIORITY);
+    //example_pipeline_init(appconfAUDIO_PIPELINE_TASK_PRIORITY);
     dac_pipeline_init(appconfAUDIO_PIPELINE_TASK_PRIORITY);
     //remote_cli_gain_init(appconfCLI_RPC_PROCESS_COMMAND_TASK_PRIORITY);
     uint32_t* audio_frame;
@@ -117,7 +117,7 @@ void startup_task(void *arg)
 #endif
 
 	for (;;) {
-		rtos_printf("Tile[%d]:\n\tMinimum heap free: %d\n\tCurrent heap free: %d\n", THIS_XCORE_TILE, xPortGetMinimumEverFreeHeapSize(), xPortGetFreeHeapSize());
+		//rtos_printf("Tile[%d]:\n\tMinimum heap free: %d\n\tCurrent heap free: %d\n", THIS_XCORE_TILE, xPortGetMinimumEverFreeHeapSize(), xPortGetFreeHeapSize());
 		vTaskDelay(pdMS_TO_TICKS(5000));
 	}
 }
@@ -142,7 +142,6 @@ void main_tile0(chanend_t c0, chanend_t c1, chanend_t c2, chanend_t c3) {
     (void)c0;
     (void)c2;
     (void)c3;
-
     tile_common_init(c1);
 }
 #endif
@@ -152,7 +151,6 @@ void main_tile1(chanend_t c0, chanend_t c1, chanend_t c2, chanend_t c3) {
     (void)c1;
     (void)c2;
     (void)c3;
-
     tile_common_init(c0);
 }
 #endif
