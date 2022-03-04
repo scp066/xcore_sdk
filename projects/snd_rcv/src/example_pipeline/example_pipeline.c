@@ -235,17 +235,24 @@ static void intertile_audiopipeline_rcv_thread(QueueHandle_t input_queue)
     int32_t *msg;
     rtos_printf("intertile_audiopipeline_rcv_thread\n");
     for (;;) {
-        if (xQueueReceive(input_queue, &msg, pdMS_TO_TICKS(1)) == pdTRUE){
-            rtos_printf("Audio Recieved\n");
-            rtos_printf(*msg);
-        }
-        
-        rtos_intertile_tx(
+        switch (xQueueReceive(input_queue, &msg, pdMS_TO_TICKS(1))){
+            case pdTRUE:
+                rtos_printf("Audio Recieved\n");
+                rtos_printf("Inter-Tile Data: %i \n",*msg);
+                rtos_intertile_tx(
                         intertile_ctx,
                         appconfINTERTILE_AUDIOPIPELINE_RCV_PORT,
                         (void **) &msg,
                         portMAX_DELAY);
-        //vPortFree(msg);
+                vPortFree(msg);
+                break;
+            case pdFALSE:
+                rtos_printf("No audio recieved \n");
+                break;
+            default:
+                rtos_printf("Unknown Error");
+                break;
+        }
     }
 }
 
@@ -267,21 +274,17 @@ void tcp_to_intertile_pipeline_create(void)
     QueueHandle_t input_queue = xQueueCreate(2, sizeof(void *));
     if( input_queue != NULL )
     {
-        rtos_printf("Hello\n");
         tcp_to_queue_handle_t tcp_to_speaker_handle = tcp_to_queue_create(
                 input_queue,
                 appconfTCP_TO_QUEUE_PORT,
                 portMAX_DELAY,
                 pdMS_TO_TICKS( 5000 ),
                 sizeof(int32_t) * appconfAUDIO_FRAME_LENGTH );
-        rtos_printf("Pass 1\n");
         intertile_pipeline_server_init(
                 tcp_to_speaker_handle->queue);
-        rtos_printf("Pass 2\n");
         tcp_stream_to_queue_create(
                 tcp_to_speaker_handle,
                 (appconfINTERTILE_AUDIOPIPELINE_TASK_PRIORITY + 1) );
-        rtos_printf("Pass 3\n");
     }
 }
 

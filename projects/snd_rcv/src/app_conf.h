@@ -50,7 +50,8 @@
 #define appconfQUEUE_TO_TCP_PORT                54321
 #define appconfTCP_TO_QUEUE_PORT                12345
 
-#define DEBUG_PRINT_ENABLE_QUEUE_TO_TCP         0
+#define DEBUG_PRINT_ENABLE_QUEUE_TO_TCP         1
+#define DEBUG_PRINT_ENABLE_TCP_TO_QUEUE         1
 
 #define appconfNETWORK_STATUS_CHECK_INTERVAL_MS     10
 #define appconfNETWORK_GET_SOCKET_INTERVAL_MS       10
