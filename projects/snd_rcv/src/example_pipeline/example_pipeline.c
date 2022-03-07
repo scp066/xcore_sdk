@@ -237,20 +237,19 @@ static void intertile_audiopipeline_rcv_thread(QueueHandle_t input_queue)
     for (;;) {
         switch (xQueueReceive(input_queue, &msg, pdMS_TO_TICKS(1))){
             case pdTRUE:
-                rtos_printf("Audio Recieved\n");
-                rtos_printf("Inter-Tile Data: %i \n",*msg);
+                rtos_printf("TCP To Inter-Tile Data: %i \n",*msg);
+                rtos_printf("TCP To Inter-Tile address: %i \n",msg);
                 rtos_intertile_tx(
                         intertile_ctx,
                         appconfINTERTILE_AUDIOPIPELINE_RCV_PORT,
-                        (void **) &msg,
-                        portMAX_DELAY);
-                vPortFree(msg);
+                        (void *) &msg,
+                        sizeof(void *));
                 break;
             case pdFALSE:
-                rtos_printf("No audio recieved \n");
+                //rtos_printf("No audio recieved \n");
                 break;
             default:
-                rtos_printf("Unknown Error");
+                //rtos_printf("Unknown Error");
                 break;
         }
     }
@@ -292,23 +291,21 @@ void *dac_pipeline_input(void *data)
 {
     (void) data;
 
-    int32_t (*audio_frame)[FRAME_NUM_CHANS];
-
-    audio_frame = pvPortMalloc(appconfAUDIO_FRAME_LENGTH * sizeof(audio_frame[0]));
-
+    //int32_t (*audio_frame)[FRAME_NUM_CHANS];
+    //audio_frame = pvPortMalloc(appconfAUDIO_FRAME_LENGTH * sizeof(audio_frame[0]));
+    int32_t *audio_frame;
     rtos_intertile_rx(
                     intertile_ctx,
                     appconfINTERTILE_AUDIOPIPELINE_RCV_PORT,
-                    audio_frame,
+                    &audio_frame,
                     portMAX_DELAY);
-
+    rtos_printf("INTERTILE TO DAC DATA: %i\n", *audio_frame);
     return audio_frame;
 }
 
-int dac_pipeline_output(void *audio_frame, void *data)
+int dac_pipeline_output(void *audio_frame)
 {
-    (void) data;
-
+    rtos_printf("DAC IN DATA: %i\n",*audio_frame);
     rtos_i2s_tx(
             i2s_ctx,
             audio_frame,
