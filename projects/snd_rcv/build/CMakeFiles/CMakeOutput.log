@@ -1,5 +1,5 @@
 The target system is: XMOS -  - 
-The host system is: Linux - 5.14.14-hardened1-1-hardened - x86_64
+The host system is: Linux - 5.15.16-hardened1-1-hardened - x86_64
 Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
 Compiler: /usr/local/XMOS/XTC/15.1.0/bin/xcc 
 Build flags: 
@@ -11,7 +11,7 @@ The output was:
 
 Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.o"
 
-The C compiler identification is Clang, found in "/home/soydev/XMOS/xcore_sdk/projects/snd_rcv/build/CMakeFiles/3.21.3/CompilerIdC/CMakeCCompilerId.o"
+The C compiler identification is Clang, found in "/home/soydev/xcore_sdk/projects/snd_rcv/build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.o"
 
 Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
 Compiler: /usr/local/XMOS/XTC/15.1.0/bin/xcc 
@@ -24,10 +24,10 @@ The output was:
 
 Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CMakeCXXCompilerId.o"
 
-The CXX compiler identification is Clang, found in "/home/soydev/XMOS/xcore_sdk/projects/snd_rcv/build/CMakeFiles/3.21.3/CompilerIdCXX/CMakeCXXCompilerId.o"
+The CXX compiler identification is Clang, found in "/home/soydev/xcore_sdk/projects/snd_rcv/build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.o"
 
 The target system is: XMOS -  - 
-The host system is: Linux - 5.14.16-hardened1-1-hardened - x86_64
+The host system is: Linux - 5.15.16-hardened1-1-hardened - x86_64
 Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
 Compiler: /usr/local/XMOS/XTC/15.1.0/bin/xcc 
 Build flags: 
@@ -39,7 +39,7 @@ The output was:
 
 Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.o"
 
-The C compiler identification is Clang, found in "/home/soydev/XMOS/xcore_sdk/projects/snd_rcv/build/CMakeFiles/3.21.4/CompilerIdC/CMakeCCompilerId.o"
+The C compiler identification is Clang, found in "/home/soydev/xcore_sdk/projects/snd_rcv/build/CMakeFiles/3.22.2/CompilerIdC/CMakeCCompilerId.o"
 
 Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
 Compiler: /usr/local/XMOS/XTC/15.1.0/bin/xcc 
@@ -52,33 +52,5 @@ The output was:
 
 Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CMakeCXXCompilerId.o"
 
-The CXX compiler identification is Clang, found in "/home/soydev/XMOS/xcore_sdk/projects/snd_rcv/build/CMakeFiles/3.21.4/CompilerIdCXX/CMakeCXXCompilerId.o"
-
-The target system is: XMOS -  - 
-The host system is: Linux - 5.15.10-hardened1-1-hardened - x86_64
-Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
-Compiler: /usr/local/XMOS/XTC/15.1.0/bin/xcc 
-Build flags: 
-Id flags: -c 
-
-The output was:
-0
-
-
-Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.o"
-
-The C compiler identification is Clang, found in "/home/allah/Documents/xcore_sdk/projects/snd_rcv/build/CMakeFiles/3.22.2/CompilerIdC/CMakeCCompilerId.o"
-
-Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
-Compiler: /usr/local/XMOS/XTC/15.1.0/bin/xcc 
-Build flags: -std=c++11
-Id flags: -c 
-
-The output was:
-0
-
-
-Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CMakeCXXCompilerId.o"
-
-The CXX compiler identification is Clang, found in "/home/allah/Documents/xcore_sdk/projects/snd_rcv/build/CMakeFiles/3.22.2/CompilerIdCXX/CMakeCXXCompilerId.o"
+The CXX compiler identification is Clang, found in "/home/soydev/xcore_sdk/projects/snd_rcv/build/CMakeFiles/3.22.2/CompilerIdCXX/CMakeCXXCompilerId.o"
 

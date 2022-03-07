@@ -1,6 +1,6 @@
 CMakeFiles/0.xe.dir/src/platform/app_pll_ctrl.c.obj: \
-  /home/allah/Documents/xcore_sdk/projects/snd_rcv/src/platform/app_pll_ctrl.c \
-  /home/allah/Documents/xcore_sdk/modules/multitile_support/platform.h \
+  /home/soydev/xcore_sdk/projects/snd_rcv/src/platform/app_pll_ctrl.c \
+  /home/soydev/xcore_sdk/modules/multitile_support/platform.h \
   /usr/local/XMOS/XTC/15.1.0/target/include/platform.h \
   /usr/local/XMOS/XTC/15.1.0/target/include/xs1.h \
   /usr/local/XMOS/XTC/15.1.0/target/include/timer.h \
@@ -25,5 +25,5 @@ CMakeFiles/0.xe.dir/src/platform/app_pll_ctrl.c.obj: \
   /usr/local/XMOS/XTC/15.1.0/target/include/limits.h \
   /usr/local/XMOS/XTC/15.1.0/target/include/newlib.h \
   /usr/local/XMOS/XTC/15.1.0/target/include/clang/limits.h \
-  /home/allah/Documents/xcore_sdk/projects/snd_rcv/src/platform/app_pll_ctrl.h \
-  /home/allah/Documents/xcore_sdk/projects/snd_rcv/src/app_conf.h
+  /home/soydev/xcore_sdk/projects/snd_rcv/src/platform/app_pll_ctrl.h \
+  /home/soydev/xcore_sdk/projects/snd_rcv/src/app_conf.h

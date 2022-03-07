@@ -43,7 +43,7 @@ static void audio_pipeline_stage(audio_pipeline_stage_ctx_t *ctx)
 	} else {
 		output_queue = NULL;
 	}
-
+	rtos_printf("DAC3\n");
 	for (;;) {
 
 		if (input_queue != NULL) {
@@ -97,7 +97,7 @@ void audio_pipeline_init(
 	}
 
 	stage_ctx = pvPortMalloc(stage_count * sizeof(audio_pipeline_stage_ctx_t));
-
+	rtos_printf("DAC2\n");
 	for (i = 0; i < stage_count; i++) {
         stage_ctx[i].pipeline_ctx = pipeline_ctx;
         stage_ctx[i].stage = i;
