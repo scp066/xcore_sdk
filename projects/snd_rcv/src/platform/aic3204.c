@@ -22,6 +22,7 @@ static inline int aic3204_reg_write(uint8_t reg, uint8_t val)
 	if (ret == I2C_REGOP_SUCCESS) {
 		return 0;
 	} else {
+		rtos_printf("I2C write reg failed\n");
 		return -1;
 	}
 }
@@ -30,7 +31,7 @@ static inline int aic3204_reg_write(uint8_t reg, uint8_t val)
  * Example configuration of the TLV320AIC3204 DAC using i2c.
  *
  * For details on the TLV320AIC3204 registers and configuration sequence,
- * see chapters 4 and 5 here: https://www.ti.com/lit/ml/slaa557/slaa557.pdf
+ * see chapters 4 and 5 here: ht	tps://www.ti.com/lit/ml/slaa557/slaa557.pdf
  *
  * Must be called after the RTOS scheduler is started.
  */
@@ -39,6 +40,8 @@ int aic3204_init(void)
     const rtos_gpio_port_id_t codec_rst_port = rtos_gpio_port(PORT_CODEC_RST_N);
     rtos_gpio_port_enable(gpio_ctx, codec_rst_port);
     rtos_gpio_port_out(gpio_ctx, codec_rst_port, 0xF);
+
+
 
 	if (
 		// Set register page to 0
@@ -124,6 +127,7 @@ int aic3204_init(void)
 		// Wait for 2.5 sec for soft stepping to take effect
 		vTaskDelay(pdMS_TO_TICKS(2500));
 	} else {
+		rtos_printf("Failed P1 \n");
 		return -1;
 	}
 
@@ -146,6 +150,7 @@ int aic3204_init(void)
 	) {
 		return 0;
 	} else {
+		rtos_printf("Failed P2\n");
 		return -1;
 	}
 }

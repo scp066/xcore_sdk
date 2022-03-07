@@ -41,8 +41,12 @@ static void flash_start(void)
 static void audio_codec_start(void)
 {
 #if ON_TILE(I2C_TILE_NO)
-    if (aic3204_init() != 0) {
-        rtos_printf("DAC initialization failed\n");
+
+    // if (aic3204_init() != 0) {
+    //     rtos_printf("DAC initialization failed\n");
+    // }
+    while(1){
+       aic3204_init(); 
     }
 #endif
 }

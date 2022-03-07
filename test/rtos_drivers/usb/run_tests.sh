@@ -29,4 +29,4 @@ echo "* Parse Result *"
 echo "****************"
 python ${XCORE_SDK_PATH}/test/rtos_drivers/python/parse_test_output.py testing/test.rpt -outfile="testing/test_results" --print_test_results --verbose
 
-pytest
+python -m pytest

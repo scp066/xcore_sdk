@@ -14,6 +14,8 @@ enum {
 
 void example_pipeline_init( UBaseType_t priority );
 
+void dac_pipeline_init( UBaseType_t priority );
+
 void intertile_pipeline_to_tcp_create( void );
 
 void tcp_to_intertile_pipeline_create( void );
