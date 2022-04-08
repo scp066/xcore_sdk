@@ -44,14 +44,15 @@ void startup_task(void *arg)
 {
     rtos_printf("Startup task running from tile %d on core %d\n", THIS_XCORE_TILE, portGET_CORE_ID());
     platform_start();
-    //DAC Debugging
-    /*sfor(;;){
+    /*//DAC Debugging
+    for(;;){
         #if ON_TILE(I2C_TILE_NO)
             if (aic3204_init() != 0) {
                 rtos_printf("DAC initialization failed\n");
             }
         #endif
-    }*/
+    }
+    */
     
     
 

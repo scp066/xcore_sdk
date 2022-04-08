@@ -1,0 +1,25 @@
+CMakeFiles/1.xe.dir/home/soydev/xcore_sdk/modules/rtos/sw_services/tls_support/thirdparty/mbedtls/library/ecdh.c.obj: \
+  /home/soydev/xcore_sdk/modules/rtos/sw_services/tls_support/thirdparty/mbedtls/library/ecdh.c \
+  /home/soydev/xcore_sdk/projects/snd_rcv/src/mbedtls_sample_config.h \
+  /home/soydev/xcore_sdk/modules/rtos/sw_services/tls_support/thirdparty/mbedtls/include/mbedtls/check_config.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/limits.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/newlib.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/clang/limits.h \
+  /home/soydev/xcore_sdk/modules/rtos/sw_services/tls_support/thirdparty/mbedtls/include/mbedtls/ecdh.h \
+  /home/soydev/xcore_sdk/modules/rtos/sw_services/tls_support/thirdparty/mbedtls/include/mbedtls/ecp.h \
+  /home/soydev/xcore_sdk/modules/rtos/sw_services/tls_support/thirdparty/mbedtls/include/mbedtls/bignum.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/clang/stddef.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/stdint.h \
+  /home/soydev/xcore_sdk/modules/rtos/sw_services/tls_support/thirdparty/mbedtls/include/mbedtls/platform_util.h \
+  /home/soydev/xcore_sdk/modules/rtos/sw_services/tls_support/thirdparty/mbedtls/include/mbedtls/platform_time.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/time.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/string.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/_ansi.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/sys/config.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/machine/ieeefp.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/sys/reent.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/sys/_types.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/machine/_types.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/machine/_default_types.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/sys/lock.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/sys/string.h

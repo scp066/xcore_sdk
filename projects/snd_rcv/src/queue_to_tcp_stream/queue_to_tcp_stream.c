@@ -23,6 +23,7 @@ static void queue_to_tcp_sender(void *arg)
     BaseType_t xSent = 0;
 
     int32_t *data = NULL;
+    rtos_printf("queue_to_tcp_sender\n");
     for (;;) {
 
         xQueueReceive( handle->queue, &data, portMAX_DELAY );
@@ -100,57 +101,78 @@ static void queue2tcp( void *arg )
     const TickType_t xReceiveTimeOut = handle->rx_timeout;
     const TickType_t xSendTimeOut = handle->tx_timeout;
     const BaseType_t xBacklog = 1;
-
     while( FreeRTOS_IsNetworkUp() == pdFALSE )
     {
         vTaskDelay(pdMS_TO_TICKS( 100 ));
     }
-
+    // Listen oriented connection
     /* Attempt to open the socket. */
-    xListeningSocket = FreeRTOS_socket( FREERTOS_AF_INET,
+    /*xListeningSocket = FreeRTOS_socket( FREERTOS_AF_INET,
 										FREERTOS_SOCK_STREAM,
-										FREERTOS_IPPROTO_TCP );
+										FREERTOS_IPPROTO_TCP ); */
 
     /* Check the socket was created. */
-    configASSERT( xListeningSocket != FREERTOS_INVALID_SOCKET );
+    //configASSERT( xListeningSocket != FREERTOS_INVALID_SOCKET );
 
     /* Set a time out so accept() will just wait for a connection. */
-    FreeRTOS_setsockopt( xListeningSocket,
+    /*FreeRTOS_setsockopt( xListeningSocket,
                          0,
                          FREERTOS_SO_RCVTIMEO,
                          &xReceiveTimeOut,
-                         sizeof( xReceiveTimeOut ) );
+                         sizeof( xReceiveTimeOut ) );*/
 
     /* Set the listening port */
-    xBindAddress.sin_port = FreeRTOS_htons( handle->port );
+    //xBindAddress.sin_port = FreeRTOS_htons( handle->port );
 
     /* Bind the socket to the port that the client RTOS task will send to. */
-    FreeRTOS_bind( xListeningSocket, &xBindAddress, sizeof( xBindAddress ) );
+    //FreeRTOS_bind( xListeningSocket, &xBindAddress, sizeof( xBindAddress ) );
 
     /* Set the socket into a listening state so it can accept connections.
     The maximum number of simultaneous connections is limited to 20. */
-    FreeRTOS_listen( xListeningSocket, xBacklog );
-
-    for( ;; )
-    {
-        /* Wait for incoming connections. */
-        xConnectedSocket = FreeRTOS_accept( xListeningSocket, &xClient, &xSize );
-
-        configASSERT( xConnectedSocket != FREERTOS_INVALID_SOCKET );
-
-        FreeRTOS_setsockopt( xConnectedSocket,
-                             0,
-                             FREERTOS_SO_SNDTIMEO,
-                             &xSendTimeOut,
-                             sizeof( xSendTimeOut ) );
-
-        handle->socket = xConnectedSocket;
-        handle->connected = pdTRUE;
-        xTaskCreate( queue_to_tcp_sender, "q2tcp_send", portTASK_STACK_DEPTH( queue_to_tcp_sender ), ( void * ) handle, uxTaskPriorityGet( NULL ), NULL );
+    //FreeRTOS_listen( xListeningSocket, xBacklog );
+    // Loopback Test connection
+    xClient.sin_port = FreeRTOS_htons(appconfTCP_TO_QUEUE_PORT);
+    xClient.sin_addr = FreeRTOS_inet_addr_quick(192,168,0,223);
+    xConnectedSocket = FreeRTOS_socket( FREERTOS_AF_INET,
+										FREERTOS_SOCK_STREAM,
+										FREERTOS_IPPROTO_TCP );
+    
+    //Connect to Remote Socket
+    switch(FreeRTOS_connect(xConnectedSocket, &xClient, sizeof(xClient))){
+        case 0:
+            rtos_printf("Connection Successful\n");
+            break;
+        case -pdFREERTOS_ERRNO_EBADF:
+            rtos_printf("Invalid Socket\n");
+            break;
+        case -pdFREERTOS_ERRNO_EISCONN:
+            rtos_printf("Already Connected\n");
+            break;
+        case -pdFREERTOS_ERRNO_EINPROGRESS:
+            rtos_printf("Remote Socket not in listening state!\n");
+            break;
+        case -pdFREERTOS_ERRNO_EWOULDBLOCK:
+            rtos_printf("Read block time = 0\n");
+            break;
+        case -pdFREERTOS_ERRNO_ETIMEDOUT:
+            rtos_printf("Timed out\n");
+            break;
+        default:
+            break;
     }
+    FreeRTOS_setsockopt( xConnectedSocket,
+                        0,
+                        FREERTOS_SO_SNDTIMEO,
+                    &xSendTimeOut,
+                     sizeof( xSendTimeOut ) );
+    handle->socket = xConnectedSocket;
+    handle->connected = pdTRUE;
+    xTaskCreate( queue_to_tcp_sender, "q2tcp_send", portTASK_STACK_DEPTH( queue_to_tcp_sender ), ( void * ) handle, uxTaskPriorityGet( NULL ), NULL );
+    vTaskDelete( NULL );
 }
 
 void queue_to_tcp_stream_create( queue_to_tcp_handle_t handle, UBaseType_t priority )
 {
     xTaskCreate( queue2tcp, "q2tcp_listen", portTASK_STACK_DEPTH( queue2tcp ), ( void * ) handle, priority, NULL );
 }
+

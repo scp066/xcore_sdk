@@ -21,19 +21,18 @@ static void tcp_to_queue_reciever(void *arg)
     Socket_t xConnectedSocket = handle->socket;
     size_t data_length = handle->data_length;
     BaseType_t xRecv = 0;
-    //rtos_printf("tcp_to_queue_reciever\n");
+    rtos_printf("tcp_to_queue_reciever\n");
     int32_t *data = NULL;
-    data = pvPortMalloc(sizeof (int32_t));
-    if(data != NULL){
-        *data=123456789;
-    }
+
     for (;;) {
 
-        /*xRecv = FreeRTOS_recv( xConnectedSocket,
+        data = pvPortMalloc(sizeof(int32_t) * appconfAUDIO_FRAME_LENGTH);
+
+        xRecv = FreeRTOS_recv( xConnectedSocket,
 							   data,
 							   data_length,
 							   0);
-         */
+
         switch (xQueueSend( handle->queue, &data, portMAX_DELAY )){
             case pdTRUE:
                 rtos_printf("TCP IN DATA:%i\n",*data);
@@ -45,7 +44,7 @@ static void tcp_to_queue_reciever(void *arg)
                 rtos_printf("Unkown Error\n");
                 break;
         }
-        vTaskDelay(pdMS_TO_TICKS( 10000 ));
+        //vTaskDelay(pdMS_TO_TICKS( 1000 ));
         //Follow Up on this?
 		/*if( xRecv != data_length)
 		{

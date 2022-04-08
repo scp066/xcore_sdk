@@ -1,0 +1,40 @@
+CMakeFiles/1.xe.dir/home/soydev/xcore_sdk/modules/lib_dsp/lib_dsp/src/fft/dsp_fft_real.xc.obj: \
+  /home/soydev/xcore_sdk/modules/lib_dsp/lib_dsp/src/fft/dsp_fft_real.xc \
+  /home/soydev/xcore_sdk/modules/lib_dsp/lib_dsp/api/dsp.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/stdint.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/limits.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/newlib.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/sys/config.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/machine/ieeefp.h \
+  /home/soydev/xcore_sdk/modules/lib_dsp/lib_dsp/api/dsp_adaptive.h \
+  /home/soydev/xcore_sdk/modules/lib_dsp/lib_dsp/api/dsp_design.h \
+  /home/soydev/xcore_sdk/modules/lib_dsp/lib_dsp/api/dsp_filters.h \
+  /home/soydev/xcore_sdk/modules/lib_dsp/lib_dsp/api/dsp_matrix.h \
+  /home/soydev/xcore_sdk/modules/lib_dsp/lib_dsp/api/dsp_statistics.h \
+  /home/soydev/xcore_sdk/modules/lib_dsp/lib_dsp/api/dsp_math.h \
+  /home/soydev/xcore_sdk/modules/lib_dsp/lib_dsp/api/dsp_math_int.h \
+  /home/soydev/xcore_sdk/modules/lib_dsp/lib_dsp/api/dsp_fast_float.h \
+  /home/soydev/xcore_sdk/modules/lib_dsp/lib_dsp/api/dsp_qformat.h \
+  /home/soydev/xcore_sdk/modules/lib_dsp/lib_dsp/api/dsp_vector.h \
+  /home/soydev/xcore_sdk/modules/lib_dsp/lib_dsp/api/dsp_fft.h \
+  /home/soydev/xcore_sdk/modules/lib_dsp/lib_dsp/api/dsp_complex.h \
+  /home/soydev/xcore_sdk/modules/lib_dsp/lib_dsp/api/dsp_float_type.h \
+  /home/soydev/xcore_sdk/modules/lib_dsp/lib_dsp/api/dsp_bfp.h \
+  /home/soydev/xcore_sdk/modules/lib_dsp/lib_dsp/api/dsp_dct.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/xclib.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/xc/stdio.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/stdio.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/_ansi.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/clang/stddef.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/clang/stdarg.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/sys/reent.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/sys/_types.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/machine/_types.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/machine/_default_types.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/sys/lock.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/sys/types.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/machine/types.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/sys/features.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/sys/stdio.h \
+  /usr/local/XMOS/XTC/15.1.0/target/include/xc/safe/stdio.h
+
